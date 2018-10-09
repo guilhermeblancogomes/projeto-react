@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Book from './Book';
+import { Alert } from 'reactstrap';
 
 export default class Shelf extends Component {
   render() {
+    let notFildBook = (
+      <Alert color="danger">Nenhum livro na sua prateleira.</Alert>
+    );
     return (
       <div className="App">
         <div className="list-books-content">
@@ -15,10 +19,11 @@ export default class Shelf extends Component {
               <ol className="books-grid">
                 {this.props.books &&
                   this.props.books.map(book => (
-                    <li>
-                      <Book key={book.id} book={book} />
+                    <li key={book.title}>
+                      <Book book={book} onChange={this.props.onChange} />
                     </li>
                   ))}
+                {this.props.books == '' ? <b>{notFildBook}</b> : ''}
                 <li />
               </ol>
             </div>

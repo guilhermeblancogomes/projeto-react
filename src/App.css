@@ -113,7 +113,7 @@ body,
   margin: 0;
 
   display: flex;
-  justify-content: center;
+  justify-content: left;
   flex-wrap: wrap;
 }
 .books-grid li {
@@ -122,11 +122,11 @@ body,
 }
 
 .book {
-  width: 140px;
+  width: 240px;
 }
 .book-title,
 .book-authors {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 .book-title {
   margin-top: 10px;
@@ -144,7 +144,7 @@ body,
 
 .book-shelf-changer {
   position: absolute;
-  right: 0;
+  right: 100px;
   bottom: -10px;
   width: 40px;
   height: 40px;
@@ -174,3 +174,4 @@ body,
   text-align: center;
   font-size: 0.8em;
 }
+/* ----------------------------------------------------------- */
