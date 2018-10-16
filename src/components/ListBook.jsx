@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import '../App.css';
 import { Link } from 'react-router-dom';
 import Shelf from './Shelf.jsx';
@@ -13,23 +12,24 @@ export default class ListBook extends Component {
   };
 
   handleChange = (e, book) => {
-    const newBooks = this.state.books.map(element => {
+    const bookSearch = this.state.books.map(element => {
       if (element.id === book.id) element.shelf = e.target.value;
       return element;
     });
     BooksAPI.update(book, e.target.value).then(response => {
-      this.setState({ books: newBooks });
+      this.setState({ books: bookSearch });
     });
   };
   render() {
     let { books } = this.state;
     const statesShelf = [
-      { prop: 'currentlyReading', label: 'Lendo' },
-      { prop: 'read', label: 'Lido' },
-      { prop: 'wantToRead', label: 'Quero ler' }
+      { prop: 'currentlyReading', label: 'Lendo', sva: 'faBook' },
+      { prop: 'read', label: 'Lido', sva: 'faBomb' },
+      { prop: 'wantToRead', label: 'Quero ler', sva: 'faBicycle' }
     ];
     return (
       <div className="App">
+     
         <div className="list-books-title">
           <img src={capa} width="300" />
         </div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
-import './ListBook';
-import './Shelf';
-
+import ListBook from './ListBook';
+import Shelf from './Shelf';
+import { Button,Badge } from 'reactstrap';
+import capaNaoEncontrada from '../icons/notFildImage2.png';
 export default class Book extends Component {
   render() {
     const valueInputs = {
@@ -16,18 +17,35 @@ export default class Book extends Component {
     return (
       <div className="book">
         <div className="book-top">
+        {
+          book.imageLinks ?
+        
           <div
             className="book-cover"
             style={{
               width: 128,
               height: 193,
               backgroundImage: `url(${
-                book.imageLinks ? book.imageLinks.thumbnail : 'Sem capa'
+                book.imageLinks ? book.imageLinks.thumbnail : capaNaoEncontrada
               }}`
+             
+            }}
+          /> :
+          <div
+            className="book-cover"
+            style={{
+              width: 128,
+              height: 193,
+              backgroundImage: `url(${capaNaoEncontrada})`
+             
             }}
           />
 
+        }
+
           <div className="book-shelf-changer">
+          
+          
             <select
               className="selection-book-shelf"
               value={book.shelf}
@@ -55,16 +73,41 @@ export default class Book extends Component {
                 {valueInputs.none}
               </option>
             </select>
+           
+          
           </div>
         </div>
-        <div className="book-title">{book.title}</div>
-        <div className="book-authors">{book.authors}</div>
-        <div className="book-authors">{book.publishedDate}</div>
-        <div className="book-authors">{book.subtitle}</div>
-        <div className="book-authors">
-          Language: {''}
-          {book.language}
+        <div className="description-book book-title">
+          {book.title ? book.title : 'Sem título'}
         </div>
+        <div className="description-book book-authors">
+          {book.authors ? book.authors : 'Sem autor'}
+        </div>
+        <div className="description-book book-subtitle">
+          {book.subtitle  ? book.subtitle : 'Sem subtitulo do livro'}
+        </div>
+        <div className="description-book book-language">
+          {book.language == 'en' ? 
+            <h6>
+              <Badge color="secondary"> 
+                Idioma: {''}
+                {book.language}
+              </Badge>
+            </h6> : 
+            <h6>
+              <Badge color="warning"> 
+                Idioma: {''}
+                {book.language}
+
+              </Badge>
+            </h6>
+          }
+          <div className="book-button-read" >
+                <Button color="info" size="sm" target="_blank" block href={`${book.infoLink}`}> Ver  </Button>
+              </div>
+        </div>
+
+        
       </div>
     );
   }
