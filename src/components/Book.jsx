@@ -103,7 +103,8 @@ export default class Book extends Component {
             </h6>
           }
           <div className="book-button-read" >
-                <Button color="info" size="sm" target="_blank" block href={`${book.infoLink}`}> Ver  </Button>
+                <Button color="info" size="sm" target="_blank" block href={`${book.previewLink
+}`}> Ver  </Button>
               </div>
         </div>
 
