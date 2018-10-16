@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
-import ListBook from './ListBook';
-import Shelf from './Shelf';
-import { Button,Badge } from 'reactstrap';
+import { Badge } from 'reactstrap';
+import Modal from './Modal';
 import capaNaoEncontrada from '../icons/notFildImage2.png';
+import iconDescription from '../icons/flip.svg';
 export default class Book extends Component {
   render() {
     const valueInputs = {
@@ -12,40 +12,50 @@ export default class Book extends Component {
       wantToRead: 'Quero ler',
       none: 'Excluir'
     };
-
+    const handleClick = () => {
+      alert(`descrição \n ${book.description}`);
+    };
     let { book } = this.props;
     return (
       <div className="book">
-        <div className="book-top">
-        {
-          book.imageLinks ?
-        
-          <div
-            className="book-cover"
-            style={{
-              width: 128,
-              height: 193,
-              backgroundImage: `url(${
-                book.imageLinks ? book.imageLinks.thumbnail : capaNaoEncontrada
-              }}`
-             
-            }}
-          /> :
-          <div
-            className="book-cover"
-            style={{
-              width: 128,
-              height: 193,
-              backgroundImage: `url(${capaNaoEncontrada})`
-             
-            }}
+        <div className="image-resize-book">
+          <img
+            src={iconDescription}
+            width="20"
+            title="Ver detalhes do livro"
+            onClick={handleClick}
           />
-
-        }
+        </div>
+        <br />
+        <div className="description-book book-title">
+          {book.title ? book.title : 'Sem título'}
+        </div>
+        <div className="book-top">
+          {book.imageLinks ? (
+            <div
+              className="book-cover"
+              style={{
+                width: 128,
+                height: 193,
+                backgroundImage: `url(${
+                  book.imageLinks
+                    ? book.imageLinks.thumbnail
+                    : capaNaoEncontrada
+                }}`
+              }}
+            />
+          ) : (
+            <div
+              className="book-cover"
+              style={{
+                width: 128,
+                height: 193,
+                backgroundImage: `url(${capaNaoEncontrada})`
+              }}
+            />
+          )}
 
           <div className="book-shelf-changer">
-          
-          
             <select
               className="selection-book-shelf"
               value={book.shelf}
@@ -73,42 +83,45 @@ export default class Book extends Component {
                 {valueInputs.none}
               </option>
             </select>
-           
-          
           </div>
         </div>
         <div className="description-book book-title">
-          {book.title ? book.title : 'Sem título'}
+          {/* {book.title ? book.title : 'Sem título'} */}
         </div>
         <div className="description-book book-authors">
           {book.authors ? book.authors : 'Sem autor'}
         </div>
         <div className="description-book book-subtitle">
-          {book.subtitle  ? book.subtitle : 'Sem subtitulo do livro'}
+          {book.subtitle ? book.subtitle : 'Sem subtitulo do livro'}
         </div>
         <div className="description-book book-language">
-          {book.language == 'en' ? 
+          {book.language == 'en' ? (
             <h6>
-              <Badge color="secondary"> 
+              <Badge color="secondary">
                 Idioma: {''}
                 {book.language}
               </Badge>
-            </h6> : 
-            <h6>
-              <Badge color="warning"> 
-                Idioma: {''}
-                {book.language}
-
+              <br />
+              <Badge color="info">
+                Págs: {''}
+                {book.pageCount ? book.pageCount : 'Não encontrado'}
               </Badge>
             </h6>
-          }
-          <div className="book-button-read" >
-                <Button color="info" size="sm" target="_blank" block href={`${book.previewLink
-}`}> Ver  </Button>
-              </div>
+          ) : (
+            <h6>
+              <Badge color="warning">
+                Idioma: {''}
+                {book.language}
+              </Badge>
+              <br />
+              <Badge color="info">
+                Págs: {''}
+                {book.pageCount ? book.pageCount : 'Não encontrado'}
+              </Badge>
+            </h6>
+          )}
         </div>
-
-        
+        <div />
       </div>
     );
   }

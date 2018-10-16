@@ -7,9 +7,11 @@ import * as BooksAPI from './BooksAPI';
 export default class ListBook extends Component {
   state = { books: [] };
 
-  componentDidMount = () => {
-    this.setState({ books: this.props.books });
-  };
+  componentDidMount() {
+    BooksAPI.getAll().then(books => {
+      this.setState({ books });
+    });
+  }
 
   handleChange = (e, book) => {
     const bookSearch = this.state.books.map(element => {
@@ -29,7 +31,6 @@ export default class ListBook extends Component {
     ];
     return (
       <div className="App">
-     
         <div className="list-books-title">
           <img src={capa} width="300" />
         </div>
