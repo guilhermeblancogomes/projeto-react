@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Badge, Row, Col, Alert } from 'reactstrap';
+import { Button, Badge, Row, Col, Alert } from 'reactstrap';
 import Modal from './Modal';
 import capaNaoEncontrada from '../icons/notFildImage2.png';
 import iconDescription from '../icons/flip.svg';
@@ -142,7 +142,7 @@ export default class Book extends Component {
             onClick={
               (this.handleClick = () => {
                 this.setState({
-                  flip: true
+                  flip: false
                 });
               })
             }
@@ -189,7 +189,10 @@ export default class Book extends Component {
             </div>
           </Col>
         </Row>
-        <Row />
+        <br />
+        <Button color="success" target="_blank" block href={book.previewLink}>
+          Ver
+        </Button>
       </div>
     );
   }
