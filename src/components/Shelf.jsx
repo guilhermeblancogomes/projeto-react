@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../App.css';
 import Book from './Book';
 import { Alert } from 'reactstrap';
-
 export default class Shelf extends Component {
   render() {
     let notFildBook = (
@@ -17,6 +16,7 @@ export default class Shelf extends Component {
               {this.props.title}
             </h2>
           </div>
+
           <div className="bookshelf">
             <div className="bookshelf-books">
               <ol className="books-grid">

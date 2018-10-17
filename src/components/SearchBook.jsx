@@ -3,12 +3,14 @@ import '../App.css';
 import Book from './Book';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
+import Loading from '../components/Loading';
 
 export default class SearchBook extends Component {
   state = {
     books: [],
     error: false,
-    bookshelf: []
+    bookshelf: [],
+    loading: false
   };
   componentDidMount = () => {
     this.setState({ books: [] });
@@ -30,10 +32,12 @@ export default class SearchBook extends Component {
     });
   };
   getBooks = () => {
+    this.setState({ loading: true });
     BooksAPI.getAll().then(books => {
       this.setState({ bookshelf: books }, () => {
         BooksAPI.search(this.state.query).then(data => {
           if (data) {
+            console.log(books);
             if (data.error) {
               alert('Nenhum livro encontrado');
             } else {
@@ -48,9 +52,9 @@ export default class SearchBook extends Component {
                 return book;
               });
               this.setState({
-                books: data
+                books: data,
+                loading: true
               });
-              console.log('aqui', books);
             }
           }
         });
@@ -71,6 +75,7 @@ export default class SearchBook extends Component {
             />
           </div>
         </div>
+
         <div className="search-books-results">
           <ol className="books-grid">
             {this.state.books.map(book => (

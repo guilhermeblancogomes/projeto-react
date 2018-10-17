@@ -129,7 +129,28 @@ body,
   height: 100% auto;
   margin: 10px;
 }
-
+.book-flip {
+  width: 240px;
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f0f0f0;
+  height: 100% auto;
+  margin: 10px;
+}
+.flip-description {
+  font-size: 0.7em;
+}
+.text-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: auto; /* fallback */
+  max-height: 198px; /* fallback */
+  -webkit-line-clamp: 5; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  font-size: 0.7em;
+}
 .image-resize-book {
   /* background: #1ac; */
   font-weight: 600;
@@ -163,7 +184,7 @@ body,
 }
 
 .book-shelf-changer {
-  position: absolute;
+  position: relative;
   right: 30px;
   bottom: -10px;
   width: 40px;
@@ -197,4 +218,46 @@ body,
   font-size: 0.8em;
 }
 
+.ctn-loading {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.cpn-loading,
+.txt-loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  position: relative;
+  margin-left: -40px;
+  margin-top: -40px;
+  color: #fff;
+}
+.txt-loading {
+  top: 60%;
+  margin-top: -40px;
+  margin-left: -35px;
+  font-weight: 600;
+}
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
 /* ----------------------------------------------------------- */
