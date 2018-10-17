@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import Shelf from './Shelf.jsx';
 import capa from '../icons/capa.png';
 import * as BooksAPI from './BooksAPI';
+import icoOpenBook from '../icons/open-book.svg';
+import icoTaskComplete from '../icons/task-complete.svg';
+import icoBookClose from '../icons/book-close.svg';
 export default class ListBook extends Component {
   state = { books: [] };
 
@@ -25,15 +28,20 @@ export default class ListBook extends Component {
   render() {
     let { books } = this.state;
     const statesShelf = [
-      { prop: 'currentlyReading', label: 'Lendo', sva: 'faBook' },
-      { prop: 'read', label: 'Lido', sva: 'faBomb' },
-      { prop: 'wantToRead', label: 'Quero ler', sva: 'faBicycle' }
+      {
+        prop: 'currentlyReading',
+        label: 'Lendo',
+        sva: `${icoOpenBook}`
+      },
+      { prop: 'read', label: 'Lido', sva: `${icoBookClose}` },
+      { prop: 'wantToRead', label: 'Quero ler', sva: `${icoTaskComplete}` }
     ];
     return (
       <div className="App">
         <div className="list-books-title">
           <img src={capa} width="300" />
         </div>
+        <br />
         {books.length > 0 &&
           statesShelf.map(type => {
             return (
