@@ -149,7 +149,7 @@ body,
   max-height: 198px; /* fallback */
   -webkit-line-clamp: 5; /* number of lines to show */
   -webkit-box-orient: vertical;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 .image-resize-book {
   /* background: #1ac; */
@@ -203,8 +203,7 @@ body,
   opacity: 0;
   cursor: pointer;
 }
-.selection-option-book-shelf {
-}
+
 /* book cover */
 
 .book-cover {
@@ -241,23 +240,5 @@ body,
   margin-top: -40px;
   margin-left: -35px;
   font-weight: 600;
-}
-.flip-card {
-  perspective: 1000px;
-}
-.flip-card-inner {
-  position: relative;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-.flip-card-front,
-.flip-card-back {
-  backface-visibility: hidden;
-}
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
 }
 /* ----------------------------------------------------------- */
