@@ -12,7 +12,6 @@ export default class Shelf extends Component {
         <div className="list-books-content">
           <div className="bookshelf">
             <h2 className="bookshelf-title">
-              <span className="">{this.props.sva}</span>
               {this.props.title}
             </h2>
           </div>

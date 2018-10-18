@@ -55,7 +55,7 @@ export default class ListBook extends Component {
           <img src={capa} width="300" />
         </div>
         <br />
-
+        {console.log("aqui", icoOpenBook )}
         {books.length > 0 &&
           statesShelf.map(type => {
             return (

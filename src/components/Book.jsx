@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { Button, Badge, Row, Col, Alert } from 'reactstrap';
-import Modal from './Modal';
 import capaNaoEncontrada from '../icons/notFildImage2.png';
 import iconDescription from '../icons/flip.svg';
 
@@ -27,6 +26,18 @@ export default class Book extends Component {
     return !this.state.flip ? (
       <div className="book">
         <div className="image-resize-book">
+        {book.shelf == "read" ? 
+          <Alert color="success"> Lido </Alert>: ''
+        }
+        {book.shelf == "currentlyReading" ? 
+          <Alert color="warning"> Lendo </Alert>: ''
+        }
+        {book.shelf == "wantToRead" ? 
+          <Alert color="info"> Querendo ler </Alert>: ''
+        }
+        {book.shelf == "none" ? 
+          <Alert color="secondary"> Disponivel </Alert>: ''
+        }
           <img
             src={iconDescription}
             width="20"
@@ -71,7 +82,7 @@ export default class Book extends Component {
               onChange={e => this.props.onChange(e, book)}
             >
               <option value="" disabled>
-                Move to...
+                Mover para...
               </option>
               <option
                 className="selection-option-book-shelf"
@@ -116,6 +127,8 @@ export default class Book extends Component {
                 {book.pageCount ? book.pageCount : 'Não encontrado'}
               </Badge>
             </h6>
+             
+
           ) : (
             <h6>
               <Badge color="warning">
@@ -130,7 +143,7 @@ export default class Book extends Component {
             </h6>
           )}
         </div>
-        <div />
+        
       </div>
     ) : (
       <div className="book-flip">
@@ -167,7 +180,7 @@ export default class Book extends Component {
           <Col xs="6">
             <div className="flip-description">
               <p>
-                <strong>Ano de publicação:</strong>
+                <strong>Publicação:</strong>
               </p>
             </div>
             <div className="text-description">
@@ -185,14 +198,19 @@ export default class Book extends Component {
             <div className="text-description">
               {book.categories
                 ? book.categories
-                : 'Sem data de lançamento do livro'}
+                : 'Sem categoria do livro'}
             </div>
           </Col>
         </Row>
         <br />
-        <Button color="success" target="_blank" block href={book.previewLink}>
+        <Button color="success" target="_blank" block href={book.previewLink ? book.previewLink : 
+        alert("Ops...Ocorreu um problema no redirecionamento")
+        }>
           Ver
         </Button>
+       
+       
+
       </div>
     );
   }
