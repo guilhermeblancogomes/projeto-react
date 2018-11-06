@@ -26,6 +26,7 @@ export default class Book extends Component {
     return !this.state.flip ? (
       <div className="book">
         <div className="image-resize-book">
+        
         {book.shelf == "read" ? 
           <Alert color="success"> Lido </Alert>: ''
         }

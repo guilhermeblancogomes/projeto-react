@@ -12,7 +12,10 @@ export default class Shelf extends Component {
         <div className="list-books-content">
           <div className="bookshelf">
             <h2 className="bookshelf-title">
-              {this.props.title}
+              {this.props.title} ({this.props.books.length})
+              {console.log("lendo", this.props.books.length)}
+              
+              
             </h2>
           </div>
 

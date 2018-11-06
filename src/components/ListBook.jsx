@@ -55,19 +55,19 @@ export default class ListBook extends Component {
           <img src={capa} width="300" />
         </div>
         <br />
-        {console.log("aqui", icoOpenBook )}
         {books.length > 0 &&
           statesShelf.map(type => {
             return (
               <Shelf
-                key={type.label}
-                title={type.label}
-                onChange={this.handleChange}
-                books={books.filter(book => book.shelf === type.prop)}
+              key={type.label}
+              title={type.label}
+              onChange={this.handleChange}
+              books={books.filter(book => book.shelf === type.prop)}
               />
             );
           })}
 
+          
         <div className="open-search">
           <Link to="/search" className="open-search" />
         </div>

@@ -40,6 +40,11 @@ body,
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  background: #e5e5e5;
+  padding: 10px;
+  border-radius: 10px;
+  color: #999;
+  font-size: 1.6em;
 }
 .bookshelf-books {
   text-align: center;
